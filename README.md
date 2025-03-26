@@ -60,9 +60,9 @@ Follow these steps to set up Unif locally:
 	```
 
 6. **Set SSL**  
-	If SSL is enabled at your specified domain (the value of `PRODUCTION_HOSTNAME`), set `SECURE_SSL_REDIRECT` to True:
+	If SSL is enabled at your specified domain (the value of `PRODUCTION_HOSTNAME`), set `USE_SSL` to True:
 	```bash
-	SECURE_SSL_REDIRECT=True
+	USE_SSL=True
 	```
 
 7. **Run the docker containers**:  
