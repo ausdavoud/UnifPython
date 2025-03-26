@@ -1,0 +1,34 @@
+site_name: Unif Docs
+dev_addr: 127.0.0.1:8001
+nav:
+  - Home: index.md
+  - Logic Flowchart: logic-flowchart.md
+  - ADR:
+      - Celery vs. AioHTTP for LMS: adrs/0000-celery-vs-aiohttp-LMS.md
+      - Celery vs. AioHTTP for Telegram: adrs/0001-celery-vs-aiohttp-telegram.md
+  - Bot:
+      - bot/main: bot/bot_main.md
+      - bot/services: bot/bot_services.md
+  - Common:
+      - common/services/cookie: common/common_services_cookie.md
+  - LMS Public:
+      - lms_public/schedule_tasks: lms_public/lms_public_schedule_tasks.md
+      - lms_public/services/parsers: lms_public/lms_public_services_parsers.md
+      - lms_public/services/scrapers: lms_public/lms_public_services_scrapers.md
+      - lms_public/services/change_handler: lms_public/lms_public_services_change_handler.md
+      - lms_public/services/scheduled_tasks: lms_public/lms_public_services_scheduled_tasks.md
+theme:
+  name: "material"
+plugins:
+  - search
+  - mkdocstrings
+  - include-markdown
+markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

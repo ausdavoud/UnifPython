@@ -1,0 +1,28 @@
+.env
+docs/
+.git/
+.venv/
+.vscode/
+unif-bruno/
+.ruff_cache/
+__pycache__/
+.ipynb_checkpoints/
+mkdocs.yml
+README.md
+src/staticfiles
+# Python compiled files that might exist outside __pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Data directories (from docker-compose)
+postgres_data/
+redis_data/
+celery/
+celery_beat/
+
+# Any logs, temp files or local development files
+*.log
+*.tmp
+.DS_Store

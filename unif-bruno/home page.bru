@@ -1,0 +1,19 @@
+meta {
+  name: home page
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://lms.ui.ac.ir/members/home
+  body: none
+  auth: none
+}
+
+headers {
+  : 
+}
+
+script:pre-request {
+  req.setMaxRedirects(0);
+}

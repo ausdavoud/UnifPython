@@ -1,0 +1,87 @@
+services:
+  db:
+    image: postgres:17
+    env_file:
+      - ./.env
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    volumes:
+      - ./redis_data:/data
+
+  web:
+    build: .
+    command: >
+      sh -c "cd src && 
+              . /app/venv/bin/activate &&
+              python manage.py migrate &&
+              python manage.py collectstatic --noinput &&
+              gunicorn core_config.wsgi:application --bind 0.0.0.0:8000"
+    env_file:
+      - ./.env
+    volumes:
+      - ./src:/app/src
+      - django_venv:/app/venv
+    depends_on:
+      - db
+      - redis
+
+  nginx:
+    image: nginx:latest
+    env_file:
+      - ./.env
+    ports:
+      - "80:80"
+      - "443:443"  # Uncomment when you set up SSL
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./src/staticfiles:/static  # Mount Django static files
+    depends_on:
+      - web
+
+  celery:
+    build: .
+    command: sh -c "cd src && . /app/venv/bin/activate && celery -A core_config worker -l info"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+
+  celery-beat:
+    build: .
+    command: sh -c "cd src && . /app/venv/bin/activate && celery -A core_config beat -l info"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+      - web
+
+  # flower:
+  #   build: .
+  #   command: sh -c "cd src && . /app/venv/bin/activate && celery -A core_config flower --port=5555"
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "5555:5555"
+  #   depends_on:
+  #     - redis
+  #     - celery
+
+  telegram-bot:
+    build: .
+    command: sh -c "cd src && . /app/venv/bin/activate && python -m bot.main"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+      - web
+
+
+volumes:
+  django_venv:
