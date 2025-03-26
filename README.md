@@ -1,5 +1,10 @@
 # Unif 
-[![Build Status](https://github.com/yourusername/yourproject/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/yourproject/actions)[![Coverage](https://codecov.io/gh/yourusername/yourproject/branch/main/graph/badge.svg)](https://codecov.io/gh/yourusername/yourproject)  [![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)[![Django Version](https://img.shields.io/badge/django-5.1+-green.svg)](https://www.djangoproject.com/)[![Celery Version](https://img.shields.io/badge/celery-5.4+-orange.svg)](https://docs.celeryproject.org/)[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)  
+
+[![Build Status](https://github.com/ausdavoud/unif/actions/workflows/django-ci-cd.yml/badge.svg)](https://github.com/ausdavoud/unif/actions)
+[![Coverage](https://codecov.io/gh/ausdavoud/unif/branch/main/graph/badge.svg)](https://codecov.io/gh/ausdavoud/unif)
+[![Python Version](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
+[![Django Version](https://img.shields.io/badge/django-5.1+-green.svg)](https://www.djangoproject.com/)
+[![Celery Version](https://img.shields.io/badge/celery-5.4+-orange.svg)](https://docs.celeryproject.org/)[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)  
 
 Unif is a Telegram bot that monitors and notifies users about changes in their university's Learning Management System (LMS). Stay informed about exercise deadlines, online session additions, and other critical updates without constantly checking the LMS portal. Unif bridges the gap between your academic responsibilities and your preferred communication platform.
 
